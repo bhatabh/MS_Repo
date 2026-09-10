@@ -176,7 +176,7 @@ jobs:
           "name=$vsixName" >> $env:GITHUB_OUTPUT
 
       - name: Generate SBOM
-        uses: anchore/sbom-action@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
+        uses: anchore/sbom-action@3ad7283483fc7af8ff2b4ea19663c2d5ca935e26 # v0.24.2
         with:
           file: ${{ steps.vsix.outputs.file }}
           format: spdx-json
@@ -199,18 +199,18 @@ jobs:
 
       - name: Attest build provenance
         id: attest
-        uses: actions/attest-build-provenance@0f67c3f4856b2e3261c31976d6725780e5e4c373 # v4.1.1
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: ${{ steps.vsix.outputs.file }}
 
       - name: Attest SBOM
-        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
           subject-path: ${{ steps.vsix.outputs.file }}
           sbom-path: extension/${{ steps.vsix.outputs.name }}.spdx.json
 
       - name: Attest dependency SBOM
-        uses: actions/attest@508db95dd578ae2727ebd6217d5ba78e4fbda05d # v4.2.1
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
         with:
           subject-path: ${{ steps.vsix.outputs.file }}
           sbom-path: sbom/dependencies.spdx.json
