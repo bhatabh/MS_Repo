@@ -35,13 +35,13 @@ jobs:
 
       - name: Submit uv.lock dependencies  # Runs on push (base snapshots) and non-fork PRs
         if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
-        uses: advanced-security/component-detection-dependency-submission-action@31f25a8de68ae5ce2ca274bc28546a78683c15ce # v0.1.4
+        uses: advanced-security/component-detection-dependency-submission-action@a02aeda7a175ad4dd38a13c4d3ff2df9da8f2cf0 # v0.2.0
         with:
           detectorArgs: 'UvLock=EnableIfDefaultOff'
 
       - name: Dependency Review
         if: github.event_name == 'pull_request'
-        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5.0.1
         with:
           retry-on-snapshot-warnings: true
           retry-on-snapshot-warnings-timeout: 120
